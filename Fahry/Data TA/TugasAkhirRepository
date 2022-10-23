@@ -1,0 +1,34 @@
+package org.d3ifcool.finpro.repository;
+
+import org.d3ifcool.finpro.core.api.ApiService;
+import org.d3ifcool.finpro.core.models.Mahasiswa;
+import org.d3ifcool.finpro.core.models.TugasAkhir;
+
+import java.util.List;
+
+import retrofit2.Call;
+
+public class TugasAkhirRepository {
+    private ApiService apiService;
+
+    public TugasAkhirRepository(ApiService apiInterface){
+        this.apiService = apiInterface;
+    }
+
+    public List<TugasAkhir> getTugasAkhir() throws Exception {
+        Call<List<TugasAkhir>> call = apiService.getTugasAkhir();
+        return call.execute().body();
+    }
+
+
+    public List<TugasAkhir> getSearchTugasAkhirBy(String parameter, String query) throws Exception {
+        Call<List<TugasAkhir>> call = apiService.getsearchTugasAkhirBy(parameter, query);
+        return call.execute().body();
+    }
+
+    public List<TugasAkhir> getSearchPengujiBy(String parameter, String query) throws Exception {
+        Call<List<TugasAkhir>> call = apiService.getsearchPengujiBy(parameter, query);
+        return call.execute().body();
+    }
+
+}
